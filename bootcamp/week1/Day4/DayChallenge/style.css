@@ -37,16 +37,17 @@ nav a {
 nav a:hover {
     color: #007bff; 
 }
-
 .contentPrincipal {
     display: flex;
     height: 75vh;
     align-items: center;
+    justify-content: space-around; /* Espaciado entre .content-left y .content-right */
+    flex-wrap: wrap; /* Permite que los elementos se colapsen en una columna en pantallas pequeñas */
 }
 
 .content-left,
 .content-right {
-    width: 50%;
+    width: 48%; /* Ajusta según sea necesario */
     text-align: center;
     font-style: italic;
 }
@@ -55,12 +56,13 @@ nav a:hover {
     background-color: #d1d1d1;
     border-radius: 10px;
     padding: 20px;
-    position: relative;
+    margin-top: 20px; /* Ajusta según sea necesario */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
 }
 
 button {
     display: block;
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -68,11 +70,22 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
 }
 
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .content-left,
+    .content-right,
+    .contentWDID
+    .contentEnd,
+    .content1,
+    .content2,
+    .content3,
+    .content4{
+        width: 100%; /* Ajusta según sea necesario para pantallas pequeñas */
+    }
+}
 button:hover {
     background-color: #0056b3;
 }
@@ -85,6 +98,7 @@ p{
 .contentWDID {
     display: flex;
     flex-direction: column;
+    margin: 20px;
 }
 
 .content-row {
