@@ -38,3 +38,126 @@ nav a:hover {
     color: #007bff; 
 }
 
+.contentPrincipal {
+    display: flex;
+    height: 75vh;
+    align-items: center;
+}
+
+.content-left,
+.content-right {
+    width: 50%;
+    text-align: center;
+    font-style: italic;
+}
+
+.content-right {
+    background-color: #d1d1d1;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+
+button {
+    display: block;
+    margin-top: 50px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+p{
+    font-size: 28px;
+}
+
+.contentWDID {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-row {
+    display: flex;
+}
+
+h3 {
+    text-align: center;
+    font-size: 32px;
+}
+
+h4{
+    font-size: 30px;
+    text-decoration: underline;
+}
+.content1,
+.content2,
+.content3,
+.content4 {
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(163, 161, 161);
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 26;
+}
+
+.education {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid #e6a8a8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(230, 168, 168, 0.1);
+}
+
+.course {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #f2caca;
+    border-radius: 5px;
+    background-color: #fdebeb;
+}
+
+.contentEnd{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+}
+.skills , .languages{
+    background-color:  #f2caca ;
+    border-radius: 10px;
+    width: 50%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 20px;
+}
+
+.skills ul li,
+.languages ul li {
+    font-size: 22px; 
+    justify-content: baseline;
+    text-align: center;
+    padding-top: 10px;
+    list-style: none;
+    font-style: italic;
+}
+
+b{
+    color: #fa3e3e;
+    font-style: oblique;
+}
