@@ -1,3 +1,66 @@
 main{
     font-family: 'Roboto', sans-serif;
 }
+.contenedor-pagina {
+    height: 100vh;
+    background: url('https://mapamundiparaimprimir.com/wp-content/uploads/2018/07/mapamundi-continentes-en-blanco.png') center/cover no-repeat;
+    color: #000; /* Color del texto, ajusta según sea necesario */
+    /* Otros estilos para tu contenido dentro del contenedor-pagina */
+}
+h1{
+    margin: 4%;
+    text-align: center;
+    font-style: normal;
+    display: block;
+}
+.conteiner{
+    display: flex;
+    background-color: rgb(253, 253, 241);
+    margin: 5px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+h5{
+    font-size: 32px;
+    color: rgb(51, 51, 238);
+}
+.item1 , .item2 , .item3 p{
+    font-style: italic;
+    color: rgb(138, 138, 138);
+}
+.item1 , .item2 , .item3{
+    margin: 10px;
+}
+
+.conteiner-cards{
+    display: flex;
+    margin: 5%;
+}
+
+.card1 , .card2 , .card3{
+    margin: 5%;
+}
+
+.card1 , .card2 , .card3 , p{
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.card1{
+    background-color: rgb(247, 165, 178);
+}
+.card2{
+    background-color: rgb(90, 90, 248);
+}
+.card3{
+    background-color: rgb(92, 252, 92);
+}
+h6{
+    font-size: 16px;
+    text-align: center;
+    color: rgb(233, 233, 233);
+}

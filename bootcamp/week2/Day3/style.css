@@ -1,0 +1,39 @@
+.conteiner{
+    width: 70vw;
+    height: 90vh;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(3, 200px) 150px;
+}
+
+.itemL{
+    background-color: red;
+    grid-row: span 1;
+    grid-column: span 1;
+    border: 2px solid black;
+}
+.itemL:nth-child(1) {
+    grid-row: 1;
+}
+
+.itemL:nth-child(2) {
+    grid-row: 2;
+}
+
+.itemL:nth-child(3) {
+    grid-row: 3;
+}
+
+.itemD{
+    background-color: lightblue;
+    grid-column: span 2;
+    border: 2px solid black;
+
+}
+.itemB{
+    background-color: yellow;
+    grid-row: 4;
+    grid-column: span 4;
+    border: 2px solid black;
+}
