@@ -8,10 +8,13 @@
 }
 
 .itemL{
-    background-color: red;
+    background-color: rgb(255, 25, 25);
     grid-row: span 1;
     grid-column: span 1;
     border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.3) inset
 }
 .itemL:nth-child(1) {
     grid-row: 1;
@@ -27,13 +30,19 @@
 
 .itemD{
     background-color: lightblue;
-    grid-column: span 2;
+    grid-column: span 3;
     border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.3) inset
 
 }
 .itemB{
-    background-color: yellow;
+    background-color: rgb(255, 255, 57);
     grid-row: 4;
     grid-column: span 4;
     border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.3) inset;
 }
