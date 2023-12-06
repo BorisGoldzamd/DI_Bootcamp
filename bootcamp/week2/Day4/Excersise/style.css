@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+nav{
+    display: flex;
+}
+.navL{
+    display: flex;
+    width: 50%;
+    margin-top: 3vh;
+    align-items: center;
+}
+.navR{
+    display: flex;
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+}
+.grid-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px; /* Agrega un margen superior */
+    display: grid;
+    grid-template-areas:
+    'header header header header'
+    'main1 main2 main3 main3'
+    'main4 main5 main6 main6';
+    gap: 10px;
+    grid-template-rows: 1fr 2fr 3fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.item[style*="grid-area: header"] {
+    /* Estilos específicos para el área de header si es necesario */
+}
+
+.item[style*="grid-area: main1"] {
+    /* Estilos específicos para el área de main1 si es necesario */
+}
