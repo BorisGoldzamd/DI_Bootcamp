@@ -1,0 +1,21 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background: #fffffe;
+    --headline:#2b2c34;
+    --paragraph:#2b2c34;
+    --button: #6246ea;
+    --buttontext: #fffffe;
+}
+*{
+    margin: 0;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    var:var(--background)
+}
+.img-nav{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
