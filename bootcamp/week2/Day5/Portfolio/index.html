@@ -12,36 +12,52 @@
 <body>
     <header>
         <nav class="nav-container">
-            <div class="header-conteiner-l">
+            <div class="header-container-l">
                 <img src="./img/yo.jpg" alt="" class="img-nav">
             </div>
-            <div class="header-conteiner-r">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About me</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact me</a></li>
-            </ul>
+                <div class="header-container-r">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About me</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#" id="contact-link">Contact me</a></li>
+                </ul>
             </div>
         </nav>
     </header>
     <div class="principal">
         <h1>HEY, I'M BORIS GOLDZAMD</h1>
+        <img src="./img/yo.jpg" alt="">
         <p>Frontend Web Developer creating impactful site and app interfaces for overall product success. Passionate about user-centric design and continuous learning.</p>
     </div>
     <div class="aboutme">
         <h1>About me</h1>
-        <p>I'm Boris, a personable Frontend Web Developer with a strong sales background. Currently diving into Full Stack Development, I specialize in crafting compelling interfaces for Websites and Web Applications. Explore my standout projects in the Portfolio section.
-            Leveraging my extensive sales experience, I bring a unique perspective to web development. I thrive on meaningful interactions, excelling in communication and quick learning. Dedicated to sharing insights with the Dev Community, Connect or Follow me on LinkedIn for valuable content on Web Development and Programming.
-            Actively seeking opportunities to contribute, learn, and flourish in the tech industry. If you have an exciting opportunity matching my skills and experience, feel free to reach out!</p>
-    </div>
+        <p>Frontend Web Developer with a strong sales background transitioning into Full Stack Development. Specializing in crafting compelling interfaces for Websites and Web Applications. Leveraging extensive sales experience for a unique perspective. Actively contributing, learning, and thriving in the tech industry. Connect on LinkedIn for valuable insights and exciting opportunities</p>
+        </div>
     <div class="grid-container">
         <!-- Row 1 -->
         <div class="grid-item" id="frontend">
             <h2>Front End</h2>
             <p>I enjoy coding things from scratch and bringing ideas to life in the browser.</p>
+            <p>Languages I speak:</p>
+            <ul>
+                <li>HTML</li>
+                <li>Pug</li>
+                <li>Slim</li>
+                <li>CSS</li>
+                <li>Sass</li>
+                <li>Git</li>
+            </ul>
+            <p>Frontend Dev Tools:</p>
+            <ul>
+                <li>Atom</li>
+                <li>Bootstrap</li>
+                <li>Bulma</li>
+                <li>Codekit</li>
+            </ul>
         </div>
     
+        <!-- Row 2 -->
         <div class="grid-item" id="sales">
             <h2>Sales</h2>
             <p>I love hearing and helping people solve their problems with useful solutions.</p>
@@ -53,6 +69,7 @@
             </ul>
         </div>
     
+        <!-- Row 3 -->
         <div class="grid-item" id="designer">
             <h2>Designer</h2>
             <p>I value simple content structure, clean design patterns, and thoughtful interactions.</p>
@@ -73,30 +90,63 @@
                 <li>Sketch</li>
                 <li>Webflow</li>
             </ul>
-            <div class="grid-item" id="frontend">
-                <h2>Front End</h2>
-                <p>I enjoy coding things from scratch and bringing ideas to life in the browser.</p>
-                <p>Languages I speak:</p>
-                <ul>
-                    <li>HTML</li>
-                    <li>Pug</li>
-                    <li>Slim</li>
-                    <li>CSS</li>
-                    <li>Sass</li>
-                    <li>Git</li>
-                </ul>
-                <p>Frontend Dev Tools:</p>
-                <ul>
-                    <li>Atom</li>
-                    <li>Bootstrap</li>
-                    <li>Bulma</li>
-                    <li>Codekit</li>
-                </ul>
-            </div>
-        <!-- Rows 2-5 -->
+        </div>
+    
+        <!-- Rows 4-5 -->
         <!-- Add content for additional rows as needed -->
     
     </div>
     
+    <div class="grid-proyects">
+        <div class="proyect-item-central"><h1>Proyects</h1></div>
+        <div class="proyect-item1"></div>
+        <div class="proyect-item2"></div>
+        <div class="proyect-item3"></div>
+        <div class="proyect-item4"></div>
+    </div>
+    <div class="testimonials-container">
+        <div class="testimonial">
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+            <p class="author">- Cliente 1</p>
+        </div>
+    
+        <div class="testimonial">
+            <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+            <p class="author">- Cliente 2</p>
+        </div>
+        <button class="prev-btn">&lt;</button>
+        <button class="next-btn">&gt;</button>
+    </div>
+    <section id="contact-me">
+        <h2>Contact Me</h2>
+    
+        <form action="mailto:borisgoldzamd@gmail.com" method="post" enctype="text/plain">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+    
+            <button type="submit">Send Message</button>
+        </form>
+    
+        <div class="contact-info">
+            <p>Email: <a href="mailto:borisgoldzamd@gmail.com">borisgoldzamd@gmail.com</a></p>
+            <p>Location: Haifa, Israel</p>
+        </div>
+    
+        <div class="social-buttons">
+            <button onclick="window.open('https://github.com/borisgoldzamd', '_blank')">GitHub</button>
+            <button onclick="window.open('https://www.linkedin.com/in/boris-goldzamd/', '_blank')">LinkedIn</button>
+            <button onclick="window.open('https://wa.me/+972537086874', '_blank')">WhatsApp</button>
+        </div>
+    
+        <p class="call-to-action">Feel free to reach out! I'm here to connect and collaborate.</p>
+    </section>
+    
+    <script src="scripts.js"></script>
 </body>
 </html>
