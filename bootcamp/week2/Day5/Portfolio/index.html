@@ -18,9 +18,9 @@
                 <div class="header-container-r">
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About me</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#" id="contact-link">Contact me</a></li>
+                    <li><a href="#idexperience">About me</a></li>
+                    <li><a href="#idproyects">Projects</a></li>
+                    <li><a href="#idcontact" id="contact-link">Contact me</a></li>
                 </ul>
             </div>
         </nav>
@@ -36,7 +36,7 @@
     </div>
     <div class="grid-container">
         <!-- Row 1 -->
-        <div class="grid-item" class="frontend">
+        <div class="grid-item" class="frontend" id="idexperience">
             <h2>Front End</h2>
             <img src="./img/img3.jpg" alt="Programmer image">
             <p>I enjoy coding things from scratch and bringing ideas to life in the browser.</p>
@@ -95,14 +95,11 @@
             </ul>
         </div>
     
-        <!-- Rows 4-5 -->
-        <!-- Add content for additional rows as needed -->
-    
     </div>
     
-    <div class="proyects">
+    <div class="proyects" id="idproyects">
         <div class="proyect-item-central">
-            <h2>Proyectos</h2>
+            <h2>Projects</h2>
         </div>
         <div class="proyect-item1">
             <h4>Trainer Webpage</h4>
@@ -112,18 +109,23 @@
     
     <div class="testimonials-container">
         <div class="testimonial">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-            <p class="author">- Cliente 1</p>
+            <p>"Boris is a phenomenal developer. Transformed my vision into a stunning website!"</p>
+            <p class="author">- Martin Redon</p>
         </div>
     
         <div class="testimonial">
-            <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
-            <p class="author">- Cliente 2</p>
+            <p>"Working with Boris was a delight. Responsive, skilled, and exceeded my expectations."</p>
+            <p class="author">- Monica Almada</p>
         </div>
+        <div class="testimonial">
+            <p>"Exceptional service from Boris. A true professional, turning ideas into digital magic."</p>
+            <p class="author">-Elizabeth Kagan</p>
+        </div>
+    
         <button class="prev-btn">&lt;</button>
         <button class="next-btn">&gt;</button>
     </div>
-    <section id="contact-me">
+    <section class="contact-me" id="idcontact">
         <h2>Contact Me</h2>
     
         <form action="mailto:borisgoldzamd@gmail.com" method="post" enctype="text/plain">
@@ -134,22 +136,27 @@
             <input type="email" id="email" name="email" required>
     
             <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <textarea id="message" name="message" rows="4" required ></textarea>
     
-            <button type="submit">Send Message</button>
-        </form>
-    
+            <button type="submit" id="contactme-button">Send Message</button>
+        </form>    
+        <div class="social-buttons">
+            <div class="social-buttons">
+                <button onclick="openLink('https://github.com/borisgoldzamd')">
+                    <img src="./img/icone-github-violet.png" alt="GitHub Logo">
+                </button>
+                <button onclick="openLink('https://www.linkedin.com/in/boris-goldzamd/')">
+                    <img src="./img/icone-linkedin-ronde-violet.png" alt="LinkedIn Logo">
+                </button>
+                <button onclick="openLink('https://wa.me/+972537086874')">
+                    <img src="./img/icone-du-logo-whatsapp-violet.png" alt="WhatsApp Logo">
+                </button>
+            </div>
+        </div>
         <div class="contact-info">
             <p>Email: <a href="mailto:borisgoldzamd@gmail.com">borisgoldzamd@gmail.com</a></p>
             <p>Location: Haifa, Israel</p>
         </div>
-    
-        <div class="social-buttons">
-            <button onclick="window.open('https://github.com/borisgoldzamd', '_blank')">GitHub</button>
-            <button onclick="window.open('https://www.linkedin.com/in/boris-goldzamd/', '_blank')">LinkedIn</button>
-            <button onclick="window.open('https://wa.me/+972537086874', '_blank')">WhatsApp</button>
-        </div>
-    
         <p class="call-to-action">Feel free to reach out! I'm here to connect and collaborate.</p>
     </section>
     
