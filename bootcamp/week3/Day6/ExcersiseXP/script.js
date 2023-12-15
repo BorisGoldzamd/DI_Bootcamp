@@ -1,46 +1,60 @@
-//excersise 1
-const people = ["Greg", "Mary", "Devon", "James"];
-//remove greg
-people.shift();
-console.log(people);
+// //excersise 1
+// const people = ["Greg", "Mary", "Devon", "James"];
+// //remove greg
+// people.shift();
+// console.log(people);
 
-//replace james to jason
-people.splice(2,1,'Jason');
-console.log(people)
+// //replace james to jason
+// people.splice(2,1,'Jason');
+// console.log(people)
 
-//adding boris
-people.push('Boris');
-console.log(people);
+// //adding boris
+// people.push('Boris');
+// console.log(people);
 
-//using indexOf mary
-console.log(people.indexOf('Mary'))
+// //using indexOf mary
+// console.log(people.indexOf('Mary'))
 
-//coping names without boris or mary
-people.splice(0,1);
-people.splice(2,1);
-console.log(people)
+// //coping names without boris or mary
+// people.splice(0,1);
+// people.splice(2,1);
+// console.log(people)
 
-//because doesnt exist, thats why the answer is -1
+// //because doesnt exist, thats why the answer is -1
 
-let last = people.indexOf(people.length-1)
-
-
-//Part II
-for (let i in people){
-    console.log(people[i])
-}
+// let last = people.indexOf(people.length-1)
 
 
-//stoping at Devon
-people.push('boris')
-console.log(people)
-
-for (let i = 0; i < people.length; i++) {
-    if (people[i].nombre === 'Devon') {
-    console.log('Encontré a Devon');
-    break;
-    }
-    console.log("idk " + i);
-}
+// //Part II
+// for (let i in people){
+//     console.log(people[i])
+// }
 
 
+// //stoping at Devon
+// people.push('boris')
+// console.log(people)
+
+// for (let i = 0; i < people.length; i++) {
+//     if (people[i].nombre === 'Devon') {
+//     console.log('Encontré a Devon');
+//     break;
+//     }
+//     console.log("idk " + i);
+// }
+
+
+// //Excersise 2
+// let colors = ['red','grey','blue','black', 'white'];
+// for(let i = 0; i < colors.length; i++){
+//     console.log('my '+ [i + 1] + ' favorite color is ' + colors[i])
+// }
+
+//excersise 3
+// let number = parseInt(prompt('Pick a number'));
+
+// while (number < 10) {
+//     number = parseInt(prompt('Pick a number'));
+// }
+
+// alert('Ok, end.');
