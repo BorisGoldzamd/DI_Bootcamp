@@ -124,4 +124,5 @@ const firstLetter= [];
 for (let i=0; i < names.length; i++){
     firstLetter.push(names[i][0])
 }
+firstLetter.sort()
 console.log('name of the secret group '+ firstLetter.join(''))
