@@ -71,27 +71,131 @@
 // 391 414 437 460 483
 // Sum : 5313
 
-function isDivisible(){
-    for(let i=0; i < 500; i++){
-        if(i % 23 === 0){
-            console.log(i)
-        }
+// function isDivisible(){
+//     for(let i=0; i < 500; i++){
+//         if(i % 23 === 0){
+//             console.log(i)
+//         }
+//     }
+// }
+// isDivisible();
+// function isDivisible() {
+//     let sum = 0;  
+
+//     for (let i = 0; i < 500; i++) {
+//         if (i % 23 === 0) {
+//             console.log(i);  
+//             sum += i;         
+//         }
+//     }
+
+//     return sum; 
+// }
+
+// let sumResult = isDivisible();
+
+// console.log("divisible by 23: " + sumResult);
+
+
+// //exc4
+// const stock = { 
+//     "banana": 6, 
+//     "apple": 3,
+//     "pear": 12,
+//     "orange": 32,
+//     "blueberry":1
+// }  
+
+// const prices = {    
+//     "banana": 4, 
+//     "apple": 2, 
+//     "pear": 1,
+//     "orange": 1.5,
+//     "blueberry":10
+// } 
+// let shoppingList = ['banana', 'orange', 'apple','blueberry'];
+// function calculateTotalCost() {
+//     let totalCost = 0;
+//     for (const item of shoppingList) {
+//         if (stock[item] > 0) {
+//             totalCost += prices[item];
+//             stock[item] -= 1; 
+//         } else {
+//             console.log(`El artículo '${item}' no está en stock o no hay suficientes disponibles.`);
+//         }
+//     }
+//     console.log(`the total cost is $${totalCost}`)
+//     return totalCost;
+// }
+// calculateTotalCost();
+
+//exc5
+// function changeEnough(itemPrice, amountOfChange) {
+//     const coinValues = [0.25, 0.10, 0.05, 0.01];
+//     let totalChangeValue = 0;
+//     for (let i = 0; i < coinValues.length; i++) {
+//         totalChangeValue += amountOfChange[i] * coinValues[i];
+//     }
+//     return totalChangeValue >= itemPrice;
+// }
+
+
+// const itemPrice = 2.50;
+// const amountOfChange = [2, 0, 1, 5];  
+
+// const canAffordItem = changeEnough(itemPrice, amountOfChange);
+// console.log(canAffordItem); 
+
+
+//exc6
+function hotelCost() {
+    let nights;
+    do {
+        nights = prompt("Enter the number of nights you would like to stay:");
+    } while (isNaN(nights) || nights === null);
+
+    return nights * 140;
+}
+
+function planeRideCost() {
+    let destination;
+    do {
+        destination = prompt("Enter your destination (London, Paris, or other):");
+    } while (!destination || typeof destination !== "string");
+
+    switch (destination.toLowerCase()) {
+        case "london":
+            return 183;
+        case "paris":
+            return 220;
+        default:
+            return 300;
     }
 }
-isDivisible();
-function isDivisible() {
-    let sum = 0;  
 
-    for (let i = 0; i < 500; i++) {
-        if (i % 23 === 0) {
-            console.log(i);  
-            sum += i;         
-        }
+function rentalCarCost() {
+    let days;
+    do {
+        days = prompt("Enter the number of days you would like to rent the car:");
+    } while (isNaN(days) || days === null);
+
+    let cost = days * 40;
+    if (days > 10) {
+        cost *= 0.95; // 5% discount for renting more than 10 days
     }
 
-    return sum; 
+    return cost;
 }
 
-let sumResult = isDivisible();
+function totalVacationCost() {
+    const hotel = hotelCost();
+    const plane = planeRideCost();
+    const rentalCar = rentalCarCost();
 
-console.log("divisible by 23: " + sumResult);
+    const totalCost = hotel + plane + rentalCar;
+
+    console.log(`The car cost: $${rentalCar}, the hotel cost: $${hotel}, the plane tickets cost: $${plane}.`);
+    return totalCost;
+}
+
+totalVacationCost();
