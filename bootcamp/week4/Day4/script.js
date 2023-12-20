@@ -1,33 +1,14 @@
-//ex1
-// let div= document.querySelector('div')
-// console.log(div)
-// Cambiar el nombre "Pete" a "Richard"
-// Seleccionar y cambiar el segundo elemento de la primera lista
-// Cambiar "Pete" a "Richard"
-// Cambiar "Pete" a "Richard"
-// Función auxiliar para buscar un elemento que contiene un texto
-function findElementWithText(selector, text) {
-    let elements = document.querySelectorAll(selector);
-    return Array.from(elements).find(element => element.textContent.includes(text));
-}
+let myDiv = document.querySelector("div");
+myDiv.style.backgroundColor = 'blue'
+console.log(myDiv);
 
-// Cambiar "Pete" a "Richard"
-let peteElement = findElementWithText('.list li', 'Pete');
-if (peteElement) {
-    peteElement.textContent = "Richard";
-}
+let firstLi = document.querySelector('ul li:first-child')
+firstLi.remove();
 
-// Eliminar el <li> que contiene el texto "Sarah"
-let sarahElement = findElementWithText('.list:nth-child(2) li', 'Sarah');
-if (sarahElement) {
-    sarahElement.parentNode.removeChild(sarahElement);
-}
+    let secondLi = document.querySelector('ul li:first-child')
+    secondLi.style.borderColor = 'black'
+    secondLi.style.borderWidth = '2px'
+    secondLi.style.borderStyle = 'solid'
 
-// Cambiar cada primer nombre de las dos <ul>'s a "TuNombre"
-let ulElements = document.querySelectorAll('.list');
-ulElements.forEach(function(ul) {
-    let firstLi = ul.querySelector('li:first-child');
-    if (firstLi) {
-        firstLi.textContent = "Boris";
-    }
-});
+let body = document.querySelector("body");
+body.style.fontSize = '50px';
