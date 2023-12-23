@@ -28,23 +28,33 @@ function playTheGame() {
 }
 
 function compareNumbers(userNumber, computerNumber) {
-    switch (true) {
-        case userNumber === computerNumber:
+    let attempts = 0;
+
+    while (attempts < 3) {
+        attempts++;
+
+        if (userNumber === computerNumber) {
             alert("WINNER");
-            // Puedes añadir aquí cualquier lógica adicional después de ganar.
-            break;
-        case userNumber > computerNumber:
-            alert("Your number is bigger than the computers, guess again");
-            // Pide al usuario un nuevo número después de la alerta.
-            break;
-        case userNumber < computerNumber:
-            alert("Your number is smaller than the computers, guess again");
-            // Pide al usuario un nuevo número después de la alerta.
-            break;
-        default:
-            alert("Unexpected case");
-            break;
+            return;
+        } else if (userNumber > computerNumber) {
+            alert("Your number is bigger than the computer’s, guess again");
+        } else {
+            alert("Your number is smaller than the computer’s, guess again");
+        }
+
+        // Solicitar al usuario un nuevo número después de cada intento
+        userNumber = parseFloat(prompt('Enter a new number:'));
     }
+
+    alert("Out of chances");
 }
+
+// Ejemplo de uso:
+// Supongamos que userNumber y computerNumber son variables con valores.
+// Luego, puedes llamar a la función de la siguiente manera:
+// compareNumbers(userNumber, computerNumber);
+
+
+
 
 
