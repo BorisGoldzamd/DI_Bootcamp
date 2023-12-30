@@ -1,10 +1,10 @@
 let selectedColor = '';
 const canvasContainer = document.getElementById('canvas-container');
+const colorPalette = document.getElementById('colorPalette');
 
-function selectColor(color) {
-    selectedColor = color;
+function selectColor(colorId) {
+    selectedColor = colorId;
 }
-
 // Crea una cuadrícula de 50x50 en el lienzo
 for (let i = 0; i < 50; i++) {
     for (let j = 0; j < 50; j++) {
