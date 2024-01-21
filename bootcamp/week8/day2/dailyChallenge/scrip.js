@@ -36,4 +36,9 @@ const cloneGroceries = () => {
 
   // Log the modified variables
   console.log("User:", user); // "John" (user is a copy of the original client)
-  console.log("Client:", client); // "Betty"
+  console.log("Client:", client); // "Betty" (client was modified)
+  console.log("Shopping:", shopping); // The modified copy of groceries
+};
+
+// Invoke the cloneGroceries function
+cloneGroceries();
