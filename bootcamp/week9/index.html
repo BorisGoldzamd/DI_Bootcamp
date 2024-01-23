@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- GET, POST-->
+    <form>
+        name: <input name="name"/>
+        email: <input mail="mail"/>
+        <input type="submit" value="send">
+    </form>
+
+    <h2>Get All Users</h2>
+    <form method="GET" action="https://jsonplaceholder.typicode.com/user">
+        <input type="submit" value="Get All Users">
+    </form>
+    <h2>Get one User</h2>
+    <form method="GET" action="https://jsonplaceholder.typicode.com/users">
+        <input type="number" name="id">
+        <input type="submit" value="Get one user">
+    </form>
+
+    <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="search google">
+    </form>
+
+    <h2>add post</h2>
+    <form action="https://jsonplaceholder.typicode.com/posts" method="post">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+    
+        <label for="body">Body</label>
+        <input type="text" id="body" name="body">
+    
+        <label for="author">Author</label>
+        <input type="text" id="author" name="userId">
+    
+        <input type="submit" value="Add Post">
+    </form>
+    
+</body>
+</html>
