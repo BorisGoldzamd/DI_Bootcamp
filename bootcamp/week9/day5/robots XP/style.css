@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    background-image: url(./media/circuit-pattern.png);
+    background-position: center;
+    background-repeat: repeat;
+}
+
+@font-face {
+    font-family: 'disposableDroid';
+    src: url('./media/font/DisposableDroidBB.ttf') format('truetype'); /* Archivo para la versión normal o regular */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'disposableDroidBold';
+    
+    src: url('./media/font/DisposableDroidBB_bld.ttf') format('truetype'); /* Archivo para la versión bold */
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'disposableDroidItalic';
+    
+    src: url('./media/font/DisposableDroidBB_ital.ttf') format('truetype'); /* Archivo para la versión italic */
+    font-weight: normal;
+    font-style: italic;
+}
+
+body {
+    font-family: 'disposableDroid', sans-serif;
+}
+
+nav {
+    display: flex;
+    background-color: rgba(154, 51, 180, 0.8);
+    color: white;
+    padding: 5px;
+    align-items: center;
+}
+
+h3 {
+    font-size: 30px;
+    margin-right: 10%;
+}
+
+input[type="text"] {
+    padding: 10px; /* Aumenta el espacio interno */
+    border: none;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-size: 16px; /* Ajusta el tamaño del texto */
+    height: 10px; /* Ajusta la altura del input */
+    width: 400px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px; /* Aumenta el espacio interno */
+    border: none;
+    border-radius: 3px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    border: 1px solid #000000;
+    background-color: rgba(89, 15, 107, 0.897);;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
