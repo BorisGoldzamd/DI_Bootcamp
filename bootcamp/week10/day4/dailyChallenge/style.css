@@ -1,0 +1,45 @@
+#gifForm {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    background-image: url('https://d.furaffinity.net/art/cyber-ogurchik/1631272405/1631272405.cyber-ogurchik_245.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; /* Cambio el color del texto a blanco para mayor legibilidad */
+}
+
+#gifContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#gifContainer img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+button {
+    height: auto;
+    border-radius: 18px;
+    background-color: rgb(99, 99, 230); /* Fondo azul */
+    color: white; /* Texto blanco */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */
+}
+
+button:hover {
+    background-color: rgb(40, 3, 99); /* Cambia el fondo a un tono más oscuro al pasar sobre el botón */
+}
+
