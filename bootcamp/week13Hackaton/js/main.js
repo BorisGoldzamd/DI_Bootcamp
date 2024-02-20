@@ -15,7 +15,7 @@ app.stage.addChild(backgroundSprite);
 let playerWidth = 32;
 let playerHeight = 32;
 let characterDirection = { x: 0, y: 0}
-let characterSpeed = 0.6
+let characterSpeed = 1
 // Crear un objeto para almacenar las texturas
 const characterTextures = {
     walk_down: [],
@@ -47,6 +47,7 @@ let isAnimating = false;
 // Variable para contar las teclas presionadas
 let keysPressed = {};
 
+//variable para que el main se detenga
 // Escuchar eventos de teclado
 document.addEventListener('keydown', (e) => {
     keysPressed[e.key] = true;
@@ -74,7 +75,14 @@ document.addEventListener('keydown', (e) => {
         isAnimating = true;
     }
 });
+function movePlayer() {
+    if (playerCanMove) {
+        // Lógica para mover al personaje principal
 
+        // Restablecer la bandera alertShown para permitir mostrar otra alerta
+        alertShown = false;
+    }
+}
 document.addEventListener('keyup', (e) => {
     delete keysPressed[e.key];
 
@@ -96,143 +104,512 @@ app.ticker.add(() => {
 // Agregar el sprite del personaje al escenario
 app.stage.addChild(mainSprite);
 
+//npc 1
+class NPC {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
 
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
 
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
 
-//npcs
-const npcImagePaths = [
-    ['assets/characters/npc/character1_1.png', 'assets/characters/npc/character1_2.png', 'assets/characters/npc/character1_3.png'],
-    ['assets/characters/npc/character2_1.png', 'assets/characters/npc/character2_2.png', 'assets/characters/npc/character2_3.png'],
-    ['assets/characters/npc/character3_1.png', 'assets/characters/npc/character3_2.png', 'assets/characters/npc/character3_3.png'],
-    ['assets/characters/npc/character4_1.png', 'assets/characters/npc/character4_2.png', 'assets/characters/npc/character4_3.png'],
-    ['assets/characters/npc/character5_1.png', 'assets/characters/npc/character5_2.png', 'assets/characters/npc/character5_3.png'],
-    ['assets/characters/npc/character7_1.png', 'assets/characters/npc/character7_2.png', 'assets/characters/npc/character7_3.png'],
-    ['assets/characters/npc/character8_1.png', 'assets/characters/npc/character8_2.png', 'assets/characters/npc/character8_3.png'],
-    ['assets/characters/npc/character9.png'],
-    ['assets/characters/npc/dj1.png','assets/characters/npc/dj2.png','assets/characters/npc/dj3.png','assets/characters/npc/dj4.png']
+// Coordenadas para el primer NPC
+const npc1X = 100;
+const npc1Y = 100;
+
+// Texturas para el primer NPC
+const npc1Textures = [
+    PIXI.Texture.from('assets/characters/npc/character1_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character1_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character1_3.png')
 ];
 
+// Crear instancia del primer NPC
+const npc1 = new NPC(npc1Textures, npc1X, npc1Y);
 
-
-// Crear un array de arrays de texturas para los NPCs
-const npcTexturesArray = npcImagePaths.map(paths => paths.map(path => PIXI.Texture.from(path)));
-
-// Función para animar automáticamente a un NPC
-function animateNPC(npcSprite, npcTextures) {
-    let currentFrameIndex = 0;
-    let elapsedTime = 0;
-    const animationSpeed = 70 / npcTextures.length; // Calcula el tiempo entre cada fotograma
-
-    function updateAnimation(delta) {
-        elapsedTime += delta;
-        if (elapsedTime >= animationSpeed) {
-            elapsedTime = 0;
-            const nextTextureIndex = (currentFrameIndex + 1) % npcTextures.length;
-            const nextTexture = npcTextures[nextTextureIndex];
-            npcSprite.texture = nextTexture;
-            currentFrameIndex = nextTextureIndex;
-        }
-    }
-
-    return updateAnimation;
-}
-
-// Función para seleccionar NPCs aleatorios (excluyendo al DJ) y posicionarlos en la mitad superior de la pantalla
-function selectRandomNPCs(npcTexturesArray, count) {
-    const randomNPCs = [];
-    const npcCount = npcTexturesArray.length;
-    const djIndex = npcCount - 1; // Índice del DJ en el array de NPCs
-    for (let i = 0; i < count; i++) {
-        let randomIndex;
-        do {
-            randomIndex = Math.floor(Math.random() * npcCount); // Elegir un índice aleatorio
-        } while (randomIndex === djIndex); // Repetir si el índice es del DJ
-        // Generar posiciones aleatorias en la mitad superior de la pantalla
-        const x = Math.random() * app.screen.width;
-        const y = Math.random() * (app.screen.height / 2);
-        randomNPCs.push({ textures: npcTexturesArray[randomIndex], x, y });
-    }
-    return randomNPCs;
-}
-
-// Número de NPCs aleatorios (excluyendo al DJ) que deseas agregar (por ejemplo, el doble de la cantidad original)
-const randomNPCCount = npcTexturesArray.length * 2;
-
-// Seleccionar NPCs aleatorios (excluyendo al DJ) y posicionarlos en la mitad superior de la pantalla
-const randomNPCs = selectRandomNPCs(npcTexturesArray.slice(0, -1), randomNPCCount);
-
-// Crear y agregar sprites para cada NPC aleatorio
-const randomNPCSprites = randomNPCs.map(({ textures, x, y }) => {
-    const sprite = new PIXI.Sprite(textures[0]); // Usar la primera textura como inicial
-    sprite.position.set(x, y);
-    app.stage.addChild(sprite); // Agregar el sprite al escenario
-    const npcAnimation = animateNPC(sprite, textures);
-    app.ticker.add(npcAnimation);
-    return sprite;
-});
-
-
-// Crear y agregar sprites para cada NPC
-// Crear y agregar sprites para cada NPC con posiciones específicas
-const npcSprites = npcTexturesArray.map((textures, index) => {
-    const sprite = new PIXI.Sprite(textures[0]); // Usar la primera textura como inicial
-    app.stage.addChild(sprite); // Agregar el sprite al escenario
-    const npcAnimation = animateNPC(sprite, textures);
-    app.ticker.add(npcAnimation);
-
-    // Definir la posición del sprite según el índice del NPC
-    switch (index) {
-        case 9: // DJ
-            sprite.position.set(400, 500); // Posición para el DJ
-            break;
-        default:
-            // Distribuir los NPC restantes en la mitad superior del mapa
-            const offsetX = 100 + (index * 100); // Espacio horizontal entre NPCs
-            const offsetY = 100; // Espacio vertical fijo
-            sprite.position.set(offsetX, offsetY);
-            break;
-    }
-
-    return sprite;
-});
-
-
-// Definir el número de NPCs y sus dimensiones
-const npcCount = 10; // Cambia este valor según la cantidad de NPCs que tengas
-const npcWidth = 50; // Ancho de cada NPC
-const npcHeight = 50; // Alto de cada NPC
-
-// Array para almacenar los NPCs
-const npcs = [];
-
-// Crear los NPCs y definir sus áreas de colisión
-for (let i = 0; i < npcCount; i++) {
-    const x = Math.random() * (app.screen.width - npcWidth);
-    const y = Math.random() * (app.screen.height - npcHeight);
-    const npc = {
-        sprite: new PIXI.Sprite(), // Agrega aquí la creación del sprite para cada NPC
-        collisionArea: new PIXI.Rectangle(x, y, npcWidth, npcHeight)
-    };
-    npcs.push(npc);
-}
-
-// Función para verificar la colisión entre el jugador y los NPCs
-function checkCollisions(playerSprite, npcs) {
-    const playerBounds = playerSprite.getBounds();
-
-    // Verificar colisión entre el jugador y cada área de colisión de los NPCs
-    for (let i = 0; i < npcs.length; i++) {
-        const npcBounds = npcs[i].collisionArea;
-
-        // Verificar si hay colisión entre el jugador y el área de colisión del NPC actual
-        if (playerBounds.intersects(npcBounds)) {
-            // Colisión detectada, puedes realizar alguna acción aquí
-            console.log(`Colisión con NPC ${i + 1}`);
-        }
-    }
-}
-
-// Llama a esta función en tu bucle de juego para verificar colisiones
+// Agregar la animación al bucle de juego
 app.ticker.add(() => {
-    checkCollisions(mainSprite, npcs);
+    npc1.animate();
 });
+
+// Agregar los sprites del NPC al escenario
+npc1.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+//npc2
+class NPC2 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el segundo NPC
+const npc2X = 200;
+const npc2Y = 200;
+
+// Texturas para el segundo NPC
+const npc2Textures = [
+    PIXI.Texture.from('assets/characters/npc/character2_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character2_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character2_3.png')
+];
+
+// Crear instancia del segundo NPC (usando la clase NPC2)
+const npc2 = new NPC2(npc2Textures, npc2X, npc2Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc2.animate();
+});
+npc2.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+//npc3
+//npc3
+class NPC3 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el tercer NPC
+const npc3X = 300;
+const npc3Y = 150;
+
+// Texturas para el tercer NPC
+const npc3Textures = [
+    PIXI.Texture.from('assets/characters/npc/character3_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character3_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character3_3.png')
+];
+
+// Crear instancia del tercer NPC (usando la clase NPC3)
+const npc3 = new NPC3(npc3Textures, npc3X, npc3Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc3.animate();
+});
+npc3.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+
+//npc4
+//npc4
+class NPC4 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el cuarto NPC
+const npc4X = 500;
+const npc4Y = 200;
+
+// Texturas para el cuarto NPC
+const npc4Textures = [
+    PIXI.Texture.from('assets/characters/npc/character4_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character4_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character4_3.png')
+];
+
+// Crear instancia del cuarto NPC (usando la clase NPC4)
+const npc4 = new NPC4(npc4Textures, npc4X, npc4Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc4.animate();
+});
+npc4.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+//npc5
+class NPC5 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el quinto NPC
+const npc5X = 500;
+const npc5Y = 100;
+
+// Texturas para el quinto NPC
+const npc5Textures = [
+    PIXI.Texture.from('assets/characters/npc/character5_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character5_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character5_3.png')
+];
+
+// Crear instancia del quinto NPC (usando la clase NPC5)
+const npc5 = new NPC5(npc5Textures, npc5X, npc5Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc5.animate();
+});
+npc5.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+//npc6
+class NPC6 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el sexto NPC
+const npc6X = 600;
+const npc6Y = 180;
+
+// Texturas para el sexto NPC
+const npc6Textures = [
+    PIXI.Texture.from('assets/characters/npc/character7_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character7_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character7_3.png')
+];
+
+// Crear instancia del sexto NPC (usando la clase NPC6)
+const npc6 = new NPC6(npc6Textures, npc6X, npc6Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc6.animate();
+});
+npc6.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+//npc7
+class NPC7 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el séptimo NPC
+const npc7X = 400;
+const npc7Y = 200;
+
+// Texturas para el séptimo NPC
+const npc7Textures = [
+    PIXI.Texture.from('assets/characters/npc/character8_1.png'),
+    PIXI.Texture.from('assets/characters/npc/character8_2.png'),
+    PIXI.Texture.from('assets/characters/npc/character8_3.png')
+];
+
+// Crear instancia del séptimo NPC (usando la clase NPC7)
+const npc7 = new NPC7(npc7Textures, npc7X, npc7Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc7.animate();
+});
+npc7.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+
+//npc9
+class NPC9 {
+    constructor(texture, x, y) {
+        this.sprite = new PIXI.Sprite(texture);
+        this.sprite.position.set(x, y);
+        this.currentFrameIndex = 0;
+    }
+}
+
+// Coordenadas para el noveno NPC
+const npc9X = 670;
+const npc9Y = 200;
+
+// Textura para el noveno NPC
+const npc9Texture = PIXI.Texture.from('assets/characters/npc/character9.png');
+
+// Crear instancia del noveno NPC (usando la clase NPC9)
+const npc9 = new NPC9(npc9Texture, npc9X, npc9Y);
+
+// Agregar el sprite del noveno NPC al escenario
+app.stage.addChild(npc9.sprite);
+
+
+//npc10
+class NPC10 {
+    constructor(textures, x, y) {
+        this.sprites = textures.map(texture => {
+            const sprite = new PIXI.Sprite(texture);
+            sprite.position.set(x, y);
+            return sprite;
+        });
+
+        this.currentFrameIndex = 0;
+        this.textures = textures;
+        this.animationSpeed = 150; 
+        this.lastFrameTime = Date.now();
+    }
+
+    animate() {
+        const now = Date.now();
+        if (now - this.lastFrameTime >= this.animationSpeed) {
+            this.lastFrameTime = now;
+            this.currentFrameIndex = (this.currentFrameIndex + 1) % this.sprites.length;
+            this.sprites.forEach(sprite => sprite.texture = this.textures[this.currentFrameIndex]);
+        }
+    }
+}
+
+// Coordenadas para el décimo NPC (DJ)
+const npc10X = 350;
+const npc10Y = 500;
+
+// Texturas para el décimo NPC (DJ)
+const npc10Textures = [
+    PIXI.Texture.from('assets/characters/npc/dj1.png'),
+    PIXI.Texture.from('assets/characters/npc/dj2.png'),
+    PIXI.Texture.from('assets/characters/npc/dj3.png'),
+    PIXI.Texture.from('assets/characters/npc/dj4.png')
+];
+
+// Crear instancia del décimo NPC (DJ)
+const npc10 = new NPC10(npc10Textures, npc10X, npc10Y);
+
+// Agregar la animación al bucle de juego
+app.ticker.add(() => {
+    npc10.animate();
+});
+
+// Agregar los sprites del NPC al escenario
+npc10.sprites.forEach(sprite => app.stage.addChild(sprite));
+
+// Definir las posiciones de los NPCs en el escenario
+const npcPositions = [
+    { x: npc1X, y: npc1Y }, // NPC 1
+    { x: npc2X, y: npc2Y }, // NPC 2
+    { x: npc3X, y: npc3Y }, // NPC 3
+    { x: npc4X, y: npc4Y }, // NPC 4
+    { x: npc5X, y: npc5Y }, // NPC 5
+    { x: npc6X, y: npc6Y }, // NPC 6
+    { x: npc7X, y: npc7Y }, // NPC 7
+    { x: npc9X, y: npc9Y }, // NPC 9
+    { x: npc10X, y: npc10Y } // NPC 10
+];
+// Declarar variables globales para los datos de los NPCs y las áreas de colisión
+let npcData;
+
+// Función para cargar los datos de los NPCs desde un archivo JSON
+function loadNPCData() {
+    // Hacer la solicitud para cargar el archivo JSON
+    fetch('data/npc.json')
+        .then(response => response.json()) // Convertir la respuesta a JSON
+        .then(data => {
+            // Almacenar los datos de los NPCs en la variable global
+            npcData = data;
+            console.log('Datos de NPCs cargados correctamente:', npcData); // Agregar este mensaje de registro
+        })
+        .catch(error => {
+            console.error('Error al cargar los datos de NPC:', error);
+        });
+}
+function showRandomInfo() {
+    canMove = false;
+    // Seleccionar un índice aleatorio del arreglo de datos
+    const randomIndex = Math.floor(Math.random() * npcData.length);
+    // Obtener los datos aleatorios
+    const randomNPC = npcData[randomIndex];
+    // Construir el mensaje con la información aleatoria
+    const message = `Name: ${randomNPC.nombre}\nAge: ${randomNPC.edad}\nDescription: ${randomNPC.descripcion}`;
+    // Mostrar el mensaje
+    alert(message);
+}
+let alertShown = false;
+let canMove = true;
+// Función para verificar colisiones entre el jugador y los NPCs
+function checkCollisions() {
+    if (canMove) {
+        // Actualizar el área de colisión del jugador
+        const playerWidth = 30; // Ancho del jugador
+        const playerHeight = 30; // Alto del jugador
+        const playerCollisionArea = new PIXI.Rectangle(mainSprite.x - playerWidth / 2, mainSprite.y - playerHeight / 2, playerWidth, playerHeight);
+
+        // Verificar si npcCollisionAreas está definido y no es null
+        if (npcCollisionAreas && npcCollisionAreas.length > 0) {
+            // Comprobar colisión con cada NPC
+            for (let i = 0; i < npcCollisionAreas.length; i++) {
+                const npcArea = npcCollisionAreas[i];
+                if (playerCollisionArea.intersects(npcArea) && !alertShown) {
+                    // Colisión detectada y no se ha mostrado una alerta, mostrar información aleatoria del NPC
+                    alertShown = true; // Establecer la bandera en true para evitar mostrar más alertas
+                    showRandomInfo();
+                    canMove = false; // Detener el movimiento del jugador
+                    setTimeout(() => {
+                        alertShown = false; // Restablecer la bandera alertShown después de 1 segundo
+                        canMove = true; // Permitir al jugador moverse nuevamente después de 1 segundo
+                    }, 1000); // 1000 milisegundos = 1 segundo
+                    break; // Detener la búsqueda después de encontrar la primera colisión
+                }
+            }
+        }
+    }
+}
+function resetAlertShown() {
+    alertShown = false;
+}
+
+// Función para crear un área de colisión basada en las dimensiones y la posición de un NPC
+function createCollisionArea(position) {
+    const npcWidth = 30; // Ancho del NPC
+    const npcHeight = 30; // Alto del NPC
+    return new PIXI.Rectangle(position.x - npcWidth / 2, position.y - npcHeight / 2, npcWidth, npcHeight);
+}
+
+// Definir áreas de colisión para los NPCs
+const npcCollisionAreas = npcPositions.map(position => createCollisionArea(position));
+
+// Llamar a esta función en cada fotograma del juego
+app.ticker.add(() => {
+    checkCollisions();
+});
+
+
+// Función para reiniciar el juego
+function restartGame() {
+    // Aquí va el código para reiniciar el juego
+    location.reload(); // Esto recarga la página, reiniciando el juego
+}
+
+// Agregar el botón al DOM
+document.addEventListener('DOMContentLoaded', function() {
+    const restartButton = document.createElement('button');
+    restartButton.textContent = 'Restart Game';
+    restartButton.id = 'restartButton';
+    restartButton.addEventListener('click', restartGame);
+    document.body.appendChild(restartButton);
+});
+
+let playerCanMove = true; // Variable para rastrear si el jugador puede moverse
+
+
+function restartMovement() {
+    canMove = true; // Establecer la bandera en true para permitir el movimiento nuevamente
+}
+
+
+
+// Cargar los datos de los NPCs al iniciar el juego
+loadNPCData();
+resetAlertShown();

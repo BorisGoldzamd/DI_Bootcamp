@@ -1,0 +1,87 @@
+[
+    {
+        "nombre": "Sgt. Liel Vainshtein",
+        "edad": 19,
+        "descripcion": "A girl with a smile, full of joy for life, so mature, so rebellious, so unique"
+    },
+    {
+        "nombre": "Aner Shapiro",
+        "edad": 22,
+        "descripcion": "Saved our lives and deserves a medal of honor for being an angel who guarded us"
+    },
+    {
+        "nombre": "Matan Elmalam",
+        "edad": 22,
+        "descripcion": "Passionate about video games and always up to date with the latest trends."
+    },
+    {
+        "nombre": "Lior Avraham",
+        "edad": 24,
+        "descripcion": "A natural leader with a strong sense of justice and integrity."
+    },
+    {
+        "nombre": "Tamar Ben-David",
+        "edad": 20,
+        "descripcion": "An adventurous spirit with a love for exploring new places and meeting new people."
+    },
+    {
+        "nombre": "Yarden Cohen",
+        "edad": 21,
+        "descripcion": "A creative soul with a passion for music and art, always seeking inspiration in the world around."
+    },
+    {
+        "nombre": "Oren Davidovich",
+        "edad": 23,
+        "descripcion": "A dedicated athlete with a competitive spirit and a drive to constantly improve."
+    },
+    {
+        "nombre": "Shira Eilat",
+        "edad": 25,
+        "descripcion": "A compassionate soul with a heart of gold, always willing to lend a helping hand to those in need."
+    },
+    {
+        "nombre": "Avi Faraj",
+        "edad": 19,
+        "descripcion": "A free spirit with a love for adventure and a thirst for new experiences."
+    },
+    {
+        "nombre": "Yonatan Golan",
+        "edad": 22,
+        "descripcion": "An intellectual mind with a passion for learning and a curiosity about the world."
+    },
+    {
+        "nombre": "Gili Haim",
+        "edad": 23,
+        "descripcion": "A social butterfly with a knack for making friends and bringing people together."
+    },
+    {
+        "nombre": "Shachar Itay",
+        "edad": 24,
+        "descripcion": "A determined individual with a strong work ethic and a commitment to achieving goals."
+    },
+    {
+        "nombre": "Daniel Jaffa",
+        "edad": 20,
+        "descripcion": "A dreamer with big ambitions and a creative vision for the future."
+    },
+    {
+        "nombre": "Neta Kfir",
+        "edad": 21,
+        "descripcion": "An optimistic soul with a cheerful disposition and a contagious enthusiasm for life."
+    },
+    {
+        "nombre": "Yehuda Levi",
+        "edad": 25,
+        "descripcion": "A wise and thoughtful individual with a depth of insight beyond his years."
+    },
+    {
+        "nombre": "Chen Malachi",
+        "edad": 23,
+        "descripcion": "A kind-hearted soul with a gentle spirit and a generous nature."
+    },
+    {
+        "nombre": "Amit Nissim",
+        "edad": 24,
+        "descripcion": "A dedicated friend with a loyal and supportive presence in the lives of those around him."
+    }
+]
