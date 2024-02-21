@@ -38,10 +38,14 @@ button a {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 5px; /* Margen para separar los botones */
+    margin: 3px; /* Margen para separar los botones */
 }
 
 #playButton:hover, #restartButton:hover {
     background-color: #45a049; /* Verde más oscuro al pasar el ratón */
 
+}
+
+#borisg{
+    margin: 5px;
 }
