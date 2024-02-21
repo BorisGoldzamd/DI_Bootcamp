@@ -1,10 +1,47 @@
-*{
-    margin: 0;
+body {
+    font-family: Arial, sans-serif;
+    margin: 19px;
 }
-body{
-    margin: 5%;
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
 }
-button{
-    margin: 2%;
-    padding: 2%;
+
+p {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#playButton, #restartButton {
+    z-index: 999;
+    font-size: 14px;
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Verde */
+    color: #000000; /* Negro */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px; /* Margen para separar los botones */
+}
+
+#playButton:hover, #restartButton:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+
 }
