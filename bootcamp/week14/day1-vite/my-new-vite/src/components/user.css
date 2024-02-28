@@ -1,0 +1,10 @@
+.card{
+    display: inline-block;
+    margin: 20px;
+    text-align: right;
+    border: 2px solid red;
+    background-color: lightblue;
+}
+.title{
+    color: blue;
+}
