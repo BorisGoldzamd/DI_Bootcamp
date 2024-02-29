@@ -1,0 +1,22 @@
+This project is  aimed at commemorating the victims of the Nova Massacre festival tragedy, providing a platform for remembrance and reflection. 
+The initiative showcases an interactive experience through PIXI.js, allowing users to engage with the memorial and pay their respects.
+
+The project comprises various components, including the creation of NPC (non-playable character) animations and the implementation of interactive elements within the scene.
+ The use of PIXI.js demonstrates a creative approach to memorialization, offering users an immersive environment to navigate and explore.
+
+One commendable aspect of the project is the incorporation of NPC animations, which bring a sense of life and movement to the memorial.
+ These animations contribute to the emotional impact of the experience, allowing users to connect more deeply with the stories being shared.
+
+However, there are areas where the project could be further enhanced. 
+For instance, while the NPC animations add visual interest, ensuring that each character's presence contributes meaningfully to the overall narrative could heighten the project's impact.
+
+Additionally, ensuring that the project's codebase is well-organized and documented could facilitate future development and maintenance efforts.
+ Clearer commenting and structure within the code would assist both developers and collaborators in understanding and building upon the project.
+
+Unfortunately, Node.js was solely utilized to serve static files in this project.
+ The decision not to leverage Node.js for dynamic content delivery or database interaction may limit the project's scalability and potential for interactivity.
+ Incorporating server-side functionality could enhance the project's ability to provide personalized experiences for users, fostering deeper engagement with the memorial.
+
+In conclusion, this project represents a heartfelt tribute to the victims of the Nova Massacre festival tragedy.
+ Through its innovative use of technology and thoughtful design, it provides a space for remembrance and reflection, fostering a sense of community and solidarity among users.
+
