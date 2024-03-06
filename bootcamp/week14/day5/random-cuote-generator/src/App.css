@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.author {
+  font-size: 50px;
+  color: #333; /* Color del texto del autor */
+  font-style: italic; /* Estilo de la fuente del autor */
+}

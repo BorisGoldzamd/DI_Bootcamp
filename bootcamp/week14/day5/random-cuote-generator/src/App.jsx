@@ -1,9 +1,10 @@
 import './App.css'
-
+import RandomGenerator from './components/RandomGenerator'
 function App() {
 
   return (
     <>
+    <RandomGenerator/>
     </>
   )
 }
