@@ -4,12 +4,12 @@ import './App.css';
 import ProfileScreen from './components/ProfileScreen';
 import ErrorBoundary from './components/ErrorBoundary'; 
 import HomeScreen from './components/HomeScreen';
-import PostList from './components/PostList'; // Importa el componente PostList
-import SkillList from './components/SkillList'; // Importa el componente SkillList
-import ExperienceList from './components/ExperienceList'; // Importa el componente ExperienceList
-import jsonData from './data/data.json'; // Importa los datos del archivo JSON data.json
-import jsonDataOne from './data/dataone.json'; // Importa los datos del archivo JSON dataone.json
-
+import PostList from './components/PostList'; 
+import SkillList from './components/SkillList'; 
+import ExperienceList from './components/ExperienceList'; 
+import jsonData from './data/data.json'; 
+import jsonDataOne from './data/dataone.json'; 
+import Exc4 from './components/Exc4';
 function App() {
   return (
     <BrowserRouter>
@@ -17,17 +17,19 @@ function App() {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/shop">Shop</NavLink>
-        <NavLink to="/posts">Posts</NavLink> {/* Agrega el NavLink para los posts */}
-        <NavLink to="/skills">Skills</NavLink> {/* Agrega el NavLink para las habilidades */}
-        <NavLink to="/experiences">Experiences</NavLink> {/* Agrega el NavLink para las experiencias */}
+        <NavLink to="/posts">Posts</NavLink>
+        <NavLink to="/skills">Skills</NavLink> 
+        <NavLink to="/experiences">Experiences</NavLink> 
+        <NavLink to="/Exc4">Exc4</NavLink> 
       </div>
       <ErrorBoundary>
         <Routes>
           <Route path='/' element={<HomeScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />
-          <Route path='/posts' element={<PostList posts={jsonData} />} /> {/* Agrega la ruta para los posts del archivo data.json */}
-          <Route path='/skills' element={<SkillList skills={jsonDataOne.Skills} />} /> {/* Agrega la ruta para las habilidades del archivo dataone.json */}
-          <Route path='/experiences' element={<ExperienceList experiences={jsonDataOne.Experiences} />} /> {/* Agrega la ruta para las experiencias del archivo dataone.json */}
+          <Route path="/Exc4" element={<Exc4 />} />
+          <Route path='/posts' element={<PostList posts={jsonData} />} />
+          <Route path='/skills' element={<SkillList skills={jsonDataOne.Skills} />} /> 
+          <Route path='/experiences' element={<ExperienceList experiences={jsonDataOne.Experiences} />} /> 
           <Route path='*' element={<ErrorBoundary />} />
         </Routes>
       </ErrorBoundary>
