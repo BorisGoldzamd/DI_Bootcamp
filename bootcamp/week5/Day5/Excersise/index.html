@@ -1,41 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+	<title>Paint Clone</title>
+	<link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="color-palette" id="canvas">
-            <div class="grid-item h6">Clear</div>
-            <div class="grid-item" id="color1" onclick="selectColor('color1')"></div>
-            <div class="grid-item" id="color2" onclick="selectColor('color2')"></div>
-            <div class="grid-item" id="color3" onclick="selectColor('color3')"></div>
-            <div class="grid-item" id="color4" onclick="selectColor('color4')"></div>
-            <div class="grid-item" id="color5" onclick="selectColor('color5')"></div>
-            <div class="grid-item" id="color6" onclick="selectColor('color6')"></div>
-            <div class="grid-item" id="color7" onclick="selectColor('color7')"></div>
-            <div class="grid-item" id="color8" onclick="selectColor('color8')"></div>
-            <div class="grid-item" id="color9" onclick="selectColor('color9')"></div>
-            <div class="grid-item" id="color10" onclick="selectColor('color10')"></div>
-            <div class="grid-item" id="color11" onclick="selectColor('color11')"></div>
-            <div class="grid-item" id="color12" onclick="selectColor('color12')"></div>
-            <div class="grid-item" id="color13" onclick="selectColor('color13')"></div>
-            <div class="grid-item" id="color14" onclick="selectColor('color14')"></div>
-            <div class="grid-item" id="color15" onclick="selectColor('color15')"></div>
-            <div class="grid-item" id="color16" onclick="selectColor('color16')"></div>
-            <div class="grid-item" id="color17" onclick="selectColor('color17')"></div>
-            <div class="grid-item" id="color18" onclick="selectColor('color18')"></div>
-            <div class="grid-item" id="color19" onclick="selectColor('color19')"></div>
-            <div class="grid-item" id="color20" onclick="selectColor('color20')"></div>
-            <div class="grid-item" id="color21" onclick="selectColor('color21')"></div>
-        </div>
-        <div class="right-column" id="canvas-container">
-            <!-- El lienzo se generará dinámicamente aquí -->
-        </div>
-    </div>
-    <script src="./script.js"></script>
+	<div class="paint-clone">
+		<canvas id="canvas"></canvas>
+		<div class="paint-tools">
+			<input type="range"
+				id="brush-size" min="1"
+				max="50" value="5">
+			<input type="color"
+				id="color-picker">
+			<button id="pen">
+				Pen
+			</button>
+			<button id="eraser">
+				Eraser
+			</button>
+			<button id="clear-canvas">
+				Clear
+			</button>
+		</div>
+	</div>
+	<script src="./script.js"></script>
 </body>
+
 </html>
