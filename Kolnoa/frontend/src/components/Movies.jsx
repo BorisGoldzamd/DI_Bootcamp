@@ -1,6 +1,6 @@
 // En el componente Movies.js
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Carousel from './Carousel';
 
 const Movies = () => {

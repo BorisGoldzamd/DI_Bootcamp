@@ -1,10 +1,8 @@
-const express = require('express');
+import express from 'express';
+import {fetchSeries} from'../controllers/seriesController.js';  // Asegúrate de que la ruta está correcta.
+
 const router = express.Router();
+// Definir la ruta para obtener series
+router.get('/series', fetchSeries);
 
-const seriesController = require('../controllers/seriesController');
-
-router.get('/', seriesController.getAllSeries);
-router.get('/:id', seriesController.getSeriesById);
-router.get('/search', seriesController.getSeriesByName);
-
-module.exports = router;
+export default router;
